@@ -1,11 +1,11 @@
 const Header = () => {
   return (
     <tr>
-      <th>#</th>
-      <th>Song</th>
-      <th>Artist</th>
-      <th>Album</th>
-      <th>Genre</th>
+      <th style={{ width: "8%" }}>#</th>
+      <th style={{ width: "25%" }}>Song</th>
+      <th style={{ width: "25%" }}>Artist</th>
+      <th style={{ width: "22%" }}>Album</th>
+      <th style={{ width: "15%" }}>Genre</th>
     </tr>
   );
 };

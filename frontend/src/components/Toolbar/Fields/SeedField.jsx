@@ -15,7 +15,7 @@ const SeedField = ({ seed, setSeed }) => {
         </div>
         <button
           className="btn btn-sm border-0"
-          onClick={() => setSeed(Math.random() * 100000000)}
+          onClick={() => setSeed(Math.floor(Math.random() * 100000000))}
         >
           <FontAwesomeIcon icon={faShuffle} size="lg" />
         </button>

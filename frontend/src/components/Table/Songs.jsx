@@ -3,11 +3,11 @@ const Songs = ({ songs }) => {
     <>
       {songs.map((song) => (
         <tr key={song.index}>
-          <td>{song.index}</td>
-          <td>{song.songName}</td>
-          <td>{song.artist}</td>
-          <td>{song.album}</td>
-          <td>{song.genre}</td>
+          <td className="text-truncate">{song.index}</td>
+          <td className="text-truncate">{song.songName}</td>
+          <td className="text-truncate">{song.artist}</td>
+          <td className="text-truncate">{song.album}</td>
+          <td className="text-truncate">{song.genre}</td>
         </tr>
       ))}
     </>

@@ -15,6 +15,5 @@ const generateSong = (seed, index, likes) => {
     year: faker.number.int({ min: 1980, max: 2026 }),
   };
 };
-// let seed = faker.number.int({min: 0, max:99999999})
 console.log();
 export default generateSong;

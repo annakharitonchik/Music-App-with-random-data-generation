@@ -7,7 +7,7 @@ const ViewTypeField = ({ viewType, setViewType }) => {
         <div className="btn-group" role="group">
           <button
             type="button"
-            className={`btn ${viewType === "pages" ? "btn-primary" : "btn-outline-primary"}`}
+            className={`btn ${viewType === "pages" ? "btn-primary" : "btn-outline-primary"} border-2 `}
             onClick={() => setViewType("pages")}
           >
             <FontAwesomeIcon icon={faTable} size="lg" />
@@ -15,7 +15,7 @@ const ViewTypeField = ({ viewType, setViewType }) => {
 
           <button
             type="button"
-            className={`btn ${viewType === "scroll" ? "btn-primary" : "btn-outline-primary"}`}
+            className={`btn ${viewType === "scroll" ? "btn-primary" : "btn-outline-primary"} border-2`}
             onClick={() => setViewType("scroll")}
           >
             <FontAwesomeIcon icon={faTableList} size="lg" />
