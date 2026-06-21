@@ -10,7 +10,9 @@ const SeedField = ({ seed, setSeed }) => {
           <input
             className="form-control border-0 shadow-none p-0 pb-1"
             value={seed}
-            onChange={(event) => setSeed(Number(event.target.value) || 0)}
+            onChange={(event) =>
+              setSeed(Number(event.target.value.slice(0, 8)) || 0)
+            }
           />
         </div>
         <button

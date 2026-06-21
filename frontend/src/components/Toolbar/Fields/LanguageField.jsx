@@ -2,8 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import useLanguageSelect from "../../../hooks/useLanguageSelect.js";
 const LanguageField = ({ language, setLanguage }) => {
-  const { open, languages, selectedLanguage, selectLanguage, toggleOpen } =
-    useLanguageSelect(language, setLanguage);
+  const { open, languages, selectedLanguage, toggleOpen } = useLanguageSelect(
+    language,
+    setLanguage,
+  );
   return (
     <div className="flex-grow-1">
       <div className="border px-2 rounded bg-white d-flex flex-row justify-content-between">
@@ -30,7 +32,8 @@ const LanguageField = ({ language, setLanguage }) => {
                 className=" dropdown-item"
                 role="button"
                 onClick={() => {
-                  selectLanguage(language.value);
+                  setLanguage(language.value);
+                  toggleOpen();
                 }}
               >
                 {language.country}

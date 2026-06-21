@@ -1,12 +1,13 @@
 import getSongs from "../services/songsApi.js";
 import { useState, useEffect } from "react";
 
-const useSongs = ({ page, quantity, seed, likes }) => {
+const useSongs = ({ language, page, quantity, seed, likes }) => {
   const [songs, setSongs] = useState([]);
   useEffect(() => {
     const timer = setTimeout(() => {
       const fetchSongs = async () => {
         const loadedSongs = await getSongs({
+          language,
           page,
           quantity,
           seed,
@@ -17,7 +18,7 @@ const useSongs = ({ page, quantity, seed, likes }) => {
       fetchSongs();
     }, 500);
     return () => clearTimeout(timer);
-  }, [page, quantity, seed, likes]);
+  }, [language, page, quantity, seed, likes]);
   return songs;
 };
 

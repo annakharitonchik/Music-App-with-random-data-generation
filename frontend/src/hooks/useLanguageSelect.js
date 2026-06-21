@@ -1,19 +1,16 @@
 import { useState } from "react";
 
-const useLanguageSelect = (language, setLanguage) => {
+const useLanguageSelect = (language) => {
   const [open, setOpen] = useState(false);
   const languages = [
     { value: "en-US", country: "English (US)" },
-    { value: "ru-RU", country: "Russian (RU)" },
+    { value: "de", country: "German (DE)" },
+    { value: "fr", country: "French (FR)" },
   ];
   const selectedLanguage = languages.find(
     (element) => element.value === language,
   );
 
-  const selectLanguage = (language) => {
-    setLanguage(language);
-    setOpen(false);
-  };
   const toggleOpen = () => {
     setOpen((open) => !open);
   };
@@ -21,7 +18,6 @@ const useLanguageSelect = (language, setLanguage) => {
     open,
     languages,
     selectedLanguage,
-    selectLanguage,
     toggleOpen,
   };
 };

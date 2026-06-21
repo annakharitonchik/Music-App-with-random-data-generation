@@ -9,8 +9,9 @@ router.get("/", (req, res) => {
   const quantity = Number(req.query.quantity || 1025);
   const seed = Number(req.query.seed || 202625);
   const likes = Math.min(Math.max(0, Number(req.query.likes || 5)), 10);
-  const songs = LoadSongs(page, quantity, seed, likes);
-  res.json({ page, quantity, seed, songs });
+  const language = req.query.language || "en-US";
+  const songs = LoadSongs(language, page, quantity, seed, likes);
+  res.json({ language, page, quantity, seed, songs });
 });
 
 export default router;

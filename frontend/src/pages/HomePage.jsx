@@ -9,8 +9,9 @@ const HomePage = () => {
   const [likes, setLikes] = useState(5);
   const [seed, setSeed] = useState(2026);
   const songs = useSongs({
+    language,
     page,
-    quantity: 20,
+    quantity: 1,
     seed,
     likes,
   });

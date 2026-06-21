@@ -6,9 +6,10 @@ const api = axios.create({
   baseURL: apiUrl,
 });
 
-const getSongs = async ({ page, quantity, seed, likes }) => {
+const getSongs = async ({ language, page, quantity, seed, likes }) => {
   const res = await api.get("/songs", {
     params: {
+      language,
       page,
       quantity,
       seed,
