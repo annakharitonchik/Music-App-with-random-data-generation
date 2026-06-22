@@ -3,7 +3,6 @@ const useTableSize = () => {
   const toolbarRef = useRef(null);
   const headerRef = useRef(null);
   const paginationRef = useRef(null);
-  const rowRef = useRef(null);
 
   const [quantity, setQuantity] = useState(0);
 
@@ -23,12 +22,6 @@ const useTableSize = () => {
       if (row > 0 && availableHeight > 0) {
         setQuantity(Math.floor(availableHeight / row));
       }
-      console.log({
-        toolbar,
-        header,
-        pagination,
-        row,
-      });
     };
 
     calculateRows();
@@ -43,7 +36,6 @@ const useTableSize = () => {
     toolbarRef,
     headerRef,
     paginationRef,
-    rowRef,
     quantity,
   };
 };

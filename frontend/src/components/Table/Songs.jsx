@@ -1,11 +1,11 @@
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Songs = ({ songs, rowRef }) => {
+const Songs = ({ songs }) => {
   return (
     <>
       {songs.map((song) => (
-        <tr key={song.index} ref={rowRef}>
+        <tr key={song.index}>
           <td className="text-truncate">
             <div className="d-flex justify-content-center ">
               <FontAwesomeIcon

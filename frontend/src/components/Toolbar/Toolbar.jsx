@@ -3,6 +3,7 @@ import SeedField from "./Fields/SeedField.jsx";
 import LikesField from "./Fields/LikesField.jsx";
 import ViewTypeField from "./Fields/ViewTypeField.jsx";
 const Toolbar = ({
+  toolbarRef,
   language,
   setLanguage,
   likes,
@@ -13,7 +14,7 @@ const Toolbar = ({
   setViewType,
 }) => {
   return (
-    <div className="navbar navbar-light  bg-light m-2">
+    <div className="navbar navbar-light  bg-light m-2" ref={toolbarRef}>
       <div className="container-fluid">
         <div className="d-flex w-100 gap-3 gap-lg-5 flex-wrap align-items-center align-items-center">
           <LanguageField language={language} setLanguage={setLanguage} />

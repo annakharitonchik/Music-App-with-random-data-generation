@@ -13,7 +13,7 @@ const generateSong = (language, seed, index, likes) => {
     index,
     artist: faker.person.fullName(),
     songName: `${UpperCase(faker.word.adjective())} ${UpperCase(faker.word.noun())}`,
-    genre: faker.music.genre(),
+    genre: UpperCase(faker.word.words(1)),
     album: faker.helpers.arrayElement([
       UpperCase(faker.word.noun()),
       UpperCase(faker.word.sample()),

@@ -15,7 +15,7 @@ const ViewTypeField = ({ viewType, setViewType }) => {
 
           <button
             type="button"
-            className={`btn ${viewType === "scroll" ? "btn-primary" : "btn-outline-primary"} border-2`}
+            className={`btn ${viewType === "scroll" ? "btn-primary" : "btn-outline-primary"} border-2 border-start-0`}
             onClick={() => setViewType("scroll")}
           >
             <FontAwesomeIcon icon={faTableList} size="lg" />
