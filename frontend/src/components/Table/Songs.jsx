@@ -1,17 +1,17 @@
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Songs = ({ songs }) => {
+const Songs = ({ songs, rowRef }) => {
   return (
     <>
       {songs.map((song) => (
-        <tr key={song.index}>
+        <tr key={song.index} ref={rowRef}>
           <td className="text-truncate">
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center ">
               <FontAwesomeIcon
                 icon={faChevronDown}
                 size="lg"
-                className="text-secondary"
+                style={{ color: "#c4c4c4" }}
               />
             </div>
           </td>
@@ -19,7 +19,7 @@ const Songs = ({ songs }) => {
           <td className="text-truncate">{song.songName}</td>
           <td className="text-truncate">{song.artist}</td>
           <td
-            className={`text-truncate ${song.album === "Single" ? "text-secondary" : ""}`}
+            className={`text-truncate ${song.album === "Single" ? "text-muted" : ""}`}
           >
             {song.album}
           </td>
