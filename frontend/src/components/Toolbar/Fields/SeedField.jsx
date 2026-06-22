@@ -10,14 +10,35 @@ const SeedField = ({ seed, setSeed }) => {
           <input
             className="form-control border-0 shadow-none p-0 pb-1"
             value={seed}
-            onChange={(event) =>
-              setSeed(Number(event.target.value.slice(0, 8)) || 0)
-            }
+            onChange={(event) => {
+              const value = event.target.value
+                .replace(/\D/g, "")
+                .replace(/^0+/, "");
+
+              const max = (1n << 64n) - 1n;
+
+              if (value === "") {
+                setSeed("0");
+              } else if (BigInt(value) <= max) {
+                setSeed(value);
+              }
+            }}
           />
         </div>
         <button
           className="btn btn-sm border-0"
-          onClick={() => setSeed(Math.floor(Math.random() * 100000000))}
+          onClick={() => {
+            const bytes = new Uint8Array(8);
+            crypto.getRandomValues(bytes);
+
+            let seed = 0n;
+
+            for (const byte of bytes) {
+              seed = (seed << 8n) | BigInt(byte);
+            }
+
+            setSeed(seed.toString());
+          }}
         >
           <FontAwesomeIcon icon={faShuffle} size="lg" />
         </button>

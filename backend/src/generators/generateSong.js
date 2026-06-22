@@ -5,7 +5,7 @@ import seedrandom from "seedrandom";
 const generateSong = (language, seed, index, likes) => {
   const UpperCase = (word) => word.charAt(0).toUpperCase() + word.slice(1);
   const faker = getFaker(language);
-  faker.seed(seed + index + language);
+  faker.seed(Number(BigInt.asUintN(32, BigInt(seed) + BigInt(index))));
 
   const rng = seedrandom(seed + index);
 
