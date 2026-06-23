@@ -1,9 +1,8 @@
 import getSongs from "../services/songsApi.js";
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const useInfiniteScroll = ({ language, seed, likes }) => {
   const [scrollSongs, setScrollSongs] = useState([]);
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const pageRef = useRef(1);
@@ -32,7 +31,6 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
 
     const nextPage = currentPage + 1;
     pageRef.current = nextPage;
-    setPage(nextPage);
     setLoading(false);
   }, [loading, fetchSongs]);
 
@@ -46,7 +44,6 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
 
       setScrollSongs(songs);
       pageRef.current = 2;
-      setPage(2);
       setLoading(false);
     };
 
