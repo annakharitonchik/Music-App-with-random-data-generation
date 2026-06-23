@@ -9,27 +9,21 @@ const generateSong = async (language, seed, index, likes) => {
 
   const rng = seedrandom(seed - index);
 
-  const artist = faker.person.fullName();
-
-  const album = faker.helpers.arrayElement([
-    UpperCase(faker.word.noun()),
-    UpperCase(faker.word.sample()),
-    UpperCase(faker.word.sample()),
-    UpperCase(faker.word.sample()),
-    "Single",
-  ]);
-  const image = await generateImages(index, album, artist);
   return {
     index,
-    artist,
-    songName: `${UpperCase(
-      faker.word.adjective(),
-    )} ${UpperCase(faker.word.noun())}`,
+    artist: faker.person.fullName(),
+    songName: `${UpperCase(faker.word.adjective())} ${UpperCase(faker.word.noun())}`,
     genre: UpperCase(faker.word.words(1)),
-    album,
+    album: faker.helpers.arrayElement([
+      UpperCase(faker.word.noun()),
+      UpperCase(faker.word.sample()),
+      UpperCase(faker.word.sample()),
+      UpperCase(faker.word.sample()),
+      "Single",
+    ]),
     likes: likesGenerator(likes, rng),
     year: faker.number.int({ min: 1980, max: 2026 }),
-    image,
+    image: generateImages(index),
   };
 };
 
