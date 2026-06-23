@@ -28,7 +28,7 @@ const HomePage = () => {
     seed,
     likes,
   });
-  const { scrollSongs, loadMore } = useInfiniteScroll({
+  const { scrollSongs, loadMore, resetScrollRef } = useInfiniteScroll({
     language,
     seed,
     likes,
@@ -57,6 +57,7 @@ const HomePage = () => {
           viewType={viewType}
           loadMore={loadMore}
           songs={viewType === "scroll" ? scrollSongs : songs}
+          resetScrollRef={resetScrollRef}
         />
       </div>
       {viewType === "pages" && (

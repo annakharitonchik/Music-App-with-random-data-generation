@@ -5,6 +5,8 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
   const [scrollSongs, setScrollSongs] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const resetScrollRef = useRef(null);
+
   const pageRef = useRef(1);
 
   const fetchSongs = useCallback(
@@ -42,6 +44,10 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
       setScrollSongs(songs);
       pageRef.current = 2;
       setLoading(false);
+
+      if (resetScrollRef.current) {
+        resetScrollRef.current.scrollTop = 0;
+      }
     };
 
     reload();
@@ -50,7 +56,7 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
   return {
     scrollSongs,
     loadMore,
-    loading,
+    resetScrollRef,
   };
 };
 

@@ -8,9 +8,11 @@ const SongsTable = ({
   viewType,
   loadMore,
   heightForScroll,
+  resetScrollRef,
 }) => {
   return (
     <div
+      ref={resetScrollRef}
       className="px-2"
       style={
         viewType === "scroll"
