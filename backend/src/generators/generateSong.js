@@ -8,11 +8,13 @@ const generateSong = async (language, seed, index, likes) => {
   faker.seed(Number(BigInt.asUintN(32, BigInt(seed) + BigInt(index))));
 
   const rng = seedrandom(seed - index);
-
+  const songName = `${UpperCase(faker.word.adjective())} ${UpperCase(
+    faker.word.noun(),
+  )}`;
   return {
     index,
     artist: faker.person.fullName(),
-    songName: `${UpperCase(faker.word.adjective())} ${UpperCase(faker.word.noun())}`,
+    songName,
     genre: UpperCase(faker.word.words(1)),
     album: faker.helpers.arrayElement([
       UpperCase(faker.word.noun()),
@@ -23,7 +25,7 @@ const generateSong = async (language, seed, index, likes) => {
     ]),
     likes: likesGenerator(likes, rng),
     year: faker.number.int({ min: 1980, max: 2026 }),
-    image: generateImages(index),
+    image: generateImages(songName),
   };
 };
 
