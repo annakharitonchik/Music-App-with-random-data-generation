@@ -4,7 +4,7 @@ import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 const Pagination = ({ page, setPage }) => {
   return (
     <div className="flex-grow-1">
-      <div className="d-flex justify-content-center mb-4">
+      <div className="d-flex justify-content-center mb-3 mt-3">
         <div className="btn-group" role="group">
           <button
             type="button"

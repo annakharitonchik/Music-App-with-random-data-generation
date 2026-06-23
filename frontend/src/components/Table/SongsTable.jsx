@@ -1,14 +1,21 @@
 import Songs from "./Songs.jsx";
 import Header from "./Header.jsx";
 import Scroll from "./Scroll.jsx";
-const SongsTable = ({ songs, headerRef, rowRef, viewType, loadMore }) => {
+const SongsTable = ({
+  songs,
+  headerRef,
+  rowRef,
+  viewType,
+  loadMore,
+  heightForScroll,
+}) => {
   return (
     <div
       className="px-2"
       style={
         viewType === "scroll"
           ? {
-              height: "452.8px",
+              height: heightForScroll,
               overflowY: "auto",
               minHeight: 0,
             }

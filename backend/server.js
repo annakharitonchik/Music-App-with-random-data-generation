@@ -16,12 +16,12 @@ app.use(
 
 app.use(express.json());
 
-app.use("/songs", songsRouter);
+app.use("/songs", await songsRouter);
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(
-    `Server listening on port ${PORT} http://localhost:5000/songs?page=1&quantity=10&seed=123&rlikes=5.7`,
+    `Server listening on port ${PORT} http://localhost:5000/songs?page=1&quantity=10&seed=123&likes=5.7`,
   );
 });

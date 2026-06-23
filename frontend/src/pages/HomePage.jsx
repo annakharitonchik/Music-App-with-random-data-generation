@@ -12,8 +12,14 @@ const HomePage = () => {
   const [likes, setLikes] = useState(5);
   const [seed, setSeed] = useState(2026);
   const [viewType, setViewType] = useState("pages");
-  const { toolbarRef, headerRef, paginationRef, rowRef, quantity } =
-    useTableSize();
+  const {
+    toolbarRef,
+    headerRef,
+    paginationRef,
+    rowRef,
+    quantity,
+    heightForScroll,
+  } = useTableSize();
 
   const songs = useSongs({
     language,
@@ -24,12 +30,13 @@ const HomePage = () => {
   });
   const { scrollSongs, loadMore } = useInfiniteScroll({
     language,
-    quantity,
     seed,
     likes,
   });
+
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column vh-100">
+      <audio hidden />
       <Toolbar
         toolbarRef={toolbarRef}
         language={language}
@@ -41,10 +48,12 @@ const HomePage = () => {
         viewType={viewType}
         setViewType={setViewType}
       />
-      <div className="flex-grow-1 overflow-auto">
+      <div className="flex-grow-1">
         <SongsTable
+          heightForScroll={heightForScroll}
           headerRef={headerRef}
           rowRef={rowRef}
+          paginationRef={paginationRef}
           viewType={viewType}
           loadMore={loadMore}
           songs={viewType === "scroll" ? scrollSongs : songs}
