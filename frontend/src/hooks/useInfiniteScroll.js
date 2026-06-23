@@ -29,8 +29,7 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
 
     setScrollSongs((prev) => [...prev, ...newSongs]);
 
-    const nextPage = currentPage + 1;
-    pageRef.current = nextPage;
+    pageRef.current = currentPage + 1;
     setLoading(false);
   }, [loading, fetchSongs]);
 
