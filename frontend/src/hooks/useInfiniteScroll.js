@@ -37,7 +37,6 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
   useEffect(() => {
     const reload = async () => {
       setLoading(true);
-      // setScrollSongs([]);
 
       pageRef.current = 1;
       const songs = await fetchSongs(1);
