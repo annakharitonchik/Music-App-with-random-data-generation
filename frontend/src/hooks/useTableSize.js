@@ -9,18 +9,18 @@ const useTableSize = () => {
 
   useEffect(() => {
     const calculateRows = () => {
-      const songDescription = 196;
+      const SONG_DESCRIPTION = 196;
       const toolbar = toolbarRef.current?.getBoundingClientRect().height;
 
       const header = headerRef.current?.getBoundingClientRect().height;
 
       const pagination = paginationRef.current?.getBoundingClientRect().height;
 
-      const row = 41.2;
+      const ROW = 41.2;
       let heightForTable =
-        window.innerHeight - toolbar - pagination - header - songDescription;
+        window.innerHeight - toolbar - pagination - header - SONG_DESCRIPTION;
       heightForScroll = window.innerHeight - toolbar - header;
-      setQuantity(Math.floor(heightForTable / row));
+      setQuantity(Math.floor(heightForTable / ROW));
     };
 
     calculateRows();
