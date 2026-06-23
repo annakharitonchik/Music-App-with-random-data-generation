@@ -2,23 +2,23 @@ import Player from "./Player.jsx";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
-import { generateImage } from "../../generation/generateImage.js";
+import { generateCustomImages } from "../../generation/generateCustomImages.js";
 const SongDescription = ({ song }) => {
   const [cover, setCover] = useState(song.image);
 
   useEffect(() => {
-    generateImage(song.image, song.songName).then(setCover);
+    generateCustomImages(song.image, song.artist, song.album).then(setCover);
   }, [song.image, song.songName]);
 
   return (
-    <div className="d-flex gap-5 p-2">
-      <div className="d-flex flex-column gap-5 p-3">
+    <div className="d-flex gap-3 p-2">
+      <div className="d-flex flex-column gap-2 p-1">
         <div>
-          <img src={song.image} alt={song.songName} width={150} height={150} />
+          <img src={cover} alt={song.songName} width={150} height={150} />
         </div>
         <div
           className="btn btn-primary rounded-4 d-flex align-items-center
-        justify-content-center px-3 py-0 fw-bold"
+        justify-content-center px-3 py-0 fw-bold mx-5"
           style={{
             fontSize: "15px",
           }}
