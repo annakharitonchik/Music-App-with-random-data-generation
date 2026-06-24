@@ -2,13 +2,35 @@ import Player from "./Player.jsx";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
-import { generateCustomImages } from "../../generation/generateCustomImages.js";
+import generateCustomImages from "../../generation/generateCustomImages.js";
+import generateMusic from "../../generation/generateMusic.js";
+
 const SongDescription = ({ song }) => {
   const [cover, setCover] = useState(song.image);
+  const [currentSong, setCurrentSong] = useState(song);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     generateCustomImages(song.image, song.artist, song.album).then(setCover);
-  }, [song.image, song.songName]);
+  }, [song.image, song.artist, song.album]);
+
+  useEffect(() => {
+    if (song.audioUrl) {
+      setCurrentSong(song);
+      return;
+    }
+
+    setIsGenerating(true);
+
+    generateMusic(song.songName, song.artist).then((generatedUrl) => {
+      setCurrentSong({
+        ...song,
+        audioUrl: generatedUrl,
+      });
+
+      setIsGenerating(false);
+    });
+  }, [song]);
 
   return (
     <div className="d-flex gap-3 p-2">
@@ -19,16 +41,9 @@ const SongDescription = ({ song }) => {
         <div
           className="btn btn-primary rounded-4 d-flex align-items-center
         justify-content-center px-3 py-0 fw-bold mx-5"
-          style={{
-            fontSize: "15px",
-          }}
+          style={{ fontSize: "15px" }}
         >
-          <span
-            style={{
-              paddingBottom: "1px",
-              paddingRight: "2px",
-            }}
-          >
+          <span style={{ paddingBottom: "1px", paddingRight: "2px" }}>
             {song.likes}
           </span>
           <FontAwesomeIcon icon={faThumbsUp} size="xs" />
@@ -36,9 +51,9 @@ const SongDescription = ({ song }) => {
       </div>
 
       <div className="d-flex flex-column gap-2">
-        <div className="d-flex  flex-wrap align-items-center gap-3">
+        <div className="d-flex flex-wrap align-items-center gap-3">
           <p className="mb-0 fw-semibold fs-5">{song.songName}</p>
-          <Player song={song} />
+          <Player song={currentSong} />
         </div>
 
         <div className="d-flex flex-wrap gap-2 align-items-center">

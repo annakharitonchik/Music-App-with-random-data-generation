@@ -1,4 +1,4 @@
-export const generateCustomImages = (imageUrl, artist, album) => {
+const generateCustomImages = (imageUrl, artist, album) => {
   return new Promise((resolve) => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -102,3 +102,4 @@ export const generateCustomImages = (imageUrl, artist, album) => {
     img.src = imageUrl;
   });
 };
+export default generateCustomImages;

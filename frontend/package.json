@@ -17,7 +17,9 @@
     "bootstrap-icons": "^1.13.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-h5-audio-player": "^3.10.2"
+    "react-h5-audio-player": "^3.10.2",
+    "seedrandom": "^3.0.5",
+    "tone": "^15.1.22"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
