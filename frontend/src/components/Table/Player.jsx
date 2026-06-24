@@ -14,13 +14,11 @@ const Player = ({ song }) => {
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  // Исправление: Сбрасываем плеер, если прилетела новая сгенерированная ссылка
   useEffect(() => {
     setPlay(false);
     setTime(0);
     setDuration(0);
 
-    // Принудительно заставляем аудио-тег обновить источник в памяти
     if (musicRef.current) {
       musicRef.current.load();
     }
