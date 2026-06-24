@@ -8,7 +8,6 @@ import generateMusic from "../../generation/generateMusic.js";
 const SongDescription = ({ song }) => {
   const [cover, setCover] = useState(song.image);
   const [currentSong, setCurrentSong] = useState(song);
-  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     generateCustomImages(song.image, song.artist, song.album).then(setCover);
@@ -16,20 +15,17 @@ const SongDescription = ({ song }) => {
 
   useEffect(() => {
     if (song.audioUrl) {
-      setCurrentSong(song);
       return;
     }
 
-    setIsGenerating(true);
-
-    generateMusic(song.songName, song.artist).then((generatedUrl) => {
-      setCurrentSong({
-        ...song,
-        audioUrl: generatedUrl,
-      });
-
-      setIsGenerating(false);
-    });
+    generateMusic(song.songName, song.artist, song.image, song.album).then(
+      (generatedUrl) => {
+        setCurrentSong({
+          ...song,
+          audioUrl: generatedUrl,
+        });
+      },
+    );
   }, [song]);
 
   return (

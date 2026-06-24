@@ -19,6 +19,7 @@
     "react-dom": "^19.2.6",
     "react-h5-audio-player": "^3.10.2",
     "seedrandom": "^3.0.5",
+    "tonal": "^6.4.3",
     "tone": "^15.1.22"
   },
   "devDependencies": {
