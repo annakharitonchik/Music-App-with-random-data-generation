@@ -8,8 +8,24 @@ const Songs = ({ songs }) => {
     <>
       {songs.map((song) => (
         <Fragment key={song.index}>
-          <tr>
-            <td className="text-truncate align-middle">
+          <tr
+            onClick={() => {
+              setOpenedSongId(song.index === openedSongId ? null : song.index);
+            }}
+            style={{
+              backgroundColor: "rgba(13, 110, 253, 0.17)",
+              cursor: "pointer",
+            }}
+          >
+            <td
+              className="text-truncate align-middle"
+              style={{
+                backgroundColor:
+                  openedSongId === song.index
+                    ? "rgba(13,110,253,0.17)"
+                    : "white",
+              }}
+            >
               <div className="d-flex justify-content-center align-items-center">
                 <FontAwesomeIcon
                   icon={
@@ -17,23 +33,64 @@ const Songs = ({ songs }) => {
                   }
                   size="lg"
                   style={{ color: "#c4c4c4" }}
-                  onClick={() => {
-                    setOpenedSongId(
-                      song.index === openedSongId ? null : song.index,
-                    );
-                  }}
                 />
               </div>
             </td>
-            <td className="text-truncate">{song.index}</td>
-            <td className="text-truncate">{song.songName}</td>
-            <td className="text-truncate">{song.artist}</td>
+            <td
+              className="text-truncate"
+              style={{
+                backgroundColor:
+                  openedSongId === song.index
+                    ? "rgba(13,110,253,0.17)"
+                    : "white",
+              }}
+            >
+              {song.index}
+            </td>
+            <td
+              className="text-truncate"
+              style={{
+                backgroundColor:
+                  openedSongId === song.index
+                    ? "rgba(13,110,253,0.17)"
+                    : "white",
+              }}
+            >
+              {song.songName}
+            </td>
+            <td
+              className="text-truncate"
+              style={{
+                backgroundColor:
+                  openedSongId === song.index
+                    ? "rgba(13,110,253,0.17)"
+                    : "white",
+              }}
+            >
+              {song.artist}
+            </td>
             <td
               className={`text-truncate ${song.album === "Single" ? "text-muted" : ""}`}
+              style={{
+                backgroundColor:
+                  openedSongId === song.index
+                    ? "rgba(13,110,253,0.17)"
+                    : "white",
+              }}
             >
               {song.album}
             </td>
-            <td className="text-truncate">{song.genre}</td>
+            <td
+              className="text-truncate"
+              style={{
+                backgroundColor:
+                  openedSongId === song.index
+                    ? "rgba(13,110,253,0.17)"
+                    : "white",
+              }}
+            >
+              {song.genre}
+            </td>
           </tr>
           {openedSongId === song.index && (
             <tr>
