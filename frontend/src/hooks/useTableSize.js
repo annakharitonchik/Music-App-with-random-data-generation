@@ -9,7 +9,7 @@ const useTableSize = () => {
 
   useEffect(() => {
     const calculateRows = () => {
-      const SONG_DESCRIPTION = 196;
+      const SONG_DESCRIPTION = 230;
       const toolbar = toolbarRef.current?.getBoundingClientRect().height;
 
       const header = headerRef.current?.getBoundingClientRect().height;
