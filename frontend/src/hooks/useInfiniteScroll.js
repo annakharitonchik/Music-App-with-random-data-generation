@@ -36,21 +36,24 @@ const useInfiniteScroll = ({ language, seed, likes }) => {
   }, [loading, fetchSongs]);
 
   useEffect(() => {
-    const reload = async () => {
-      setLoading(true);
+    const timer = setTimeout(() => {
+      const reload = async () => {
+        setLoading(true);
 
-      const songs = await fetchSongs(1);
+        const songs = await fetchSongs(1);
 
-      setScrollSongs(songs);
-      pageRef.current = 2;
-      setLoading(false);
+        setScrollSongs(songs);
+        pageRef.current = 2;
+        setLoading(false);
 
-      if (resetScrollRef.current) {
-        resetScrollRef.current.scrollTop = 0;
-      }
-    };
+        if (resetScrollRef.current) {
+          resetScrollRef.current.scrollTop = 0;
+        }
+      };
 
-    reload();
+      reload();
+    }, 500);
+    return () => clearTimeout(timer);
   }, [fetchSongs]);
 
   return {
