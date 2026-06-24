@@ -7,7 +7,7 @@ const generateSong = async (language, seed, index, likes) => {
   const faker = getFaker(language);
   faker.seed(Number(BigInt.asUintN(32, BigInt(seed) + BigInt(index))));
 
-  const rng = seedrandom(seed - index);
+  const rng = seedrandom(`${seed}-${index}-${language}`);
 
   const songName = `${UpperCase(faker.word.adjective())} ${UpperCase(
     faker.word.noun(),
